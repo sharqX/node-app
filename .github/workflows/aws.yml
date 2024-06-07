@@ -67,7 +67,7 @@ jobs:
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
       env:
-        ECR_REGISTRY: "730335228785.dkr.ecr.ap-south-1.amazonaws.com/app-repo"
+        ECR_REGISTRY: "730335228785.dkr.ecr.ap-south-1.amazonaws.com"
         IMAGE_TAG: latest
       run: |
         # Build a docker container and
