@@ -18,6 +18,12 @@ resource "aws_ecs_service" "service" {
     security_groups = [aws_security_group.node-sg.id]
     subnets = [ aws_subnet.s1.id, aws_subnet.s2.id, aws_subnet.s3.id ]
   }
+
+   load_balancer {
+    target_group_arn = aws_alb_target_group.app.id
+    container_name   = "node-app"
+    container_port   = 80
+  }
 }
 
 resource "aws_ecs_task_definition" "td" {
