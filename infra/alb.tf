@@ -24,7 +24,7 @@ resource "aws_alb_listener" "front_end" {
   }
 }
 
-resource "aws_alb_listener" "front_end" {
+resource "aws_alb_listener" "front_end_1" {
   load_balancer_arn = aws_alb.main.id
   port              = 443
   protocol          = "HTTPS"
