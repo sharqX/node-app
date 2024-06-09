@@ -24,17 +24,6 @@ resource "aws_alb_listener" "front_end" {
   }
 }
 
-resource "aws_alb_listener" "front_end_1" {
-  load_balancer_arn = aws_alb.main.id
-  port              = 443
-  protocol          = "HTTPS"
-
-  default_action {
-    target_group_arn = aws_alb_target_group.app.id
-    type             = "forward"
-  }
-}
-
 resource "aws_security_group" "lb" {
   name        = "cb-load-balancer-security-group"
   description = "controls access to the ALB"
@@ -44,13 +33,6 @@ resource "aws_security_group" "lb" {
     protocol    = "tcp"
     from_port   = 80
     to_port     = 80
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    protocol = "tcp"
-    from_port = 443
-    to_port = 443
     cidr_blocks = ["0.0.0.0/0"]
   }
 
